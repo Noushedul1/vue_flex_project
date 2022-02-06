@@ -1,26 +1,94 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <div class="player">
+    <div v-for="player in players" :key="player.id" class="player_style" @click="playerDetails(id)">
+      {{player.pname}} id : {{player.id}}
+    </div>
+  </div>
+
+  <div class="playerImage">
+    <div v-for="(pi,index) in playerImage" :key="index">
+      <img :src="pi" alt="">
+    </div>
+  </div>
+
+  <div class="rawimg">
+    <img src="./assets/img/pic1.jpg" alt="" class="cl big">
+    <img src="./assets/img/pic2.jpg" alt="" class="cl medium">
+    <img src="./assets/img/pic3.jpg" alt="" class="cl big">
+    <img src="./assets/img/pic4.jpg" alt="" class="cl small">
+    <img src="./assets/img/pic1.jpg" alt="" class="cl big">
+    <img src="./assets/img/pic2.jpg" alt="" class="cl medium">
+    <img src="./assets/img/pic3.jpg" alt="" class="cl big">
+    <img src="./assets/img/pic4.jpg" alt="" class="cl small">
+  </div>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      players : [
+        {pname: 'Shakib al hasan is the world most valuable player. He is our pride , we should proud to him',id: 1},
+        {pname: 'Tamim was born in Chattogram. He is them most important player in our country',id: 2},
+        {pname: 'Mashrafee is the great leader in our history of cricket. He is a true figher .',id: 3},
+        {pname: 'mushfuq',id: 4},
+        {pname: 'mahmudullah',id: 5},
+        ],
+        playerImage : [
+        'https://source.unsplash.com/random/200x200?cat',
+        'https://source.unsplash.com/random/200x200?rat',
+        'https://source.unsplash.com/random/200x200?fish',
+        'https://source.unsplash.com/random/200x200?girl',
+        ],
+      
+    }
+  },
+  methods: {
+    
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.player{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.player_style{
+  border: 1px solid black;
+  padding: 20px;
+  background: #ddd;
+  margin: 10px;
+}
+.playerImage{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.cl{
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+.rawimg{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+.big{
+  flex: 3;
+}
+.small{
+  flex: 1;
+  transition: all .3s ease-in;
+}
+.medium{
+  flex: 2
+}
+.small:hover{
+  scale: 2;
 }
 </style>
